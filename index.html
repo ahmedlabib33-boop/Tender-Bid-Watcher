@@ -1,0 +1,261 @@
+<!-- =========================================================
+     ENGINEERED & DEVELOPED BRANDING
+     Eng. Ahmed Labib
+     ========================================================= -->
+
+<style>
+.brand-strip{
+    position:fixed;
+    left:50%;
+    bottom:12px;
+    transform:translateX(-50%);
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:9px 16px;
+
+    border:1px solid rgba(255,215,64,.42);
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(9,17,31,.95),
+            rgba(19,28,49,.97)
+        );
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.03) inset,
+        0 0 18px rgba(255,215,64,.18),
+        0 10px 35px rgba(0,0,0,.40);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    color:#dbe7ff;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.02em;
+
+    white-space:nowrap;
+}
+
+/* Gold illuminated engineering indicator */
+.brand-strip::before{
+    content:"";
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#ffd84d;
+
+    box-shadow:
+        0 0 8px rgba(255,216,77,.95),
+        0 0 16px rgba(255,216,77,.68);
+}
+
+/* Separator */
+.brand-sep{
+    opacity:.45;
+}
+
+/* Engineer name — fluorescent gold */
+.brand-name{
+    color:#ffd84d;
+
+    font-weight:900;
+
+    letter-spacing:.025em;
+
+    text-shadow:
+        0 0 6px rgba(255,216,77,.78),
+        0 0 14px rgba(255,216,77,.50),
+        0 0 26px rgba(255,190,0,.24);
+}
+
+/* Mobile optimization */
+@media(max-width:640px){
+
+    .brand-strip{
+        bottom:8px;
+
+        max-width:calc(100vw - 18px);
+
+        padding:8px 11px;
+
+        gap:5px;
+
+        font-size:10.5px;
+
+        overflow:hidden;
+
+        text-overflow:ellipsis;
+    }
+}
+</style>
+
+
+<!-- =========================================================
+     PLACE THIS INSIDE <body>
+     ========================================================= -->
+
+<div class="brand-strip">
+
+    <span>
+        Engineered &amp; Developed
+    </span>
+
+    <span class="brand-sep">
+        |
+    </span>
+
+    <span class="brand-name">
+        Eng. Ahmed Labib
+    </span>
+
+</div>
+
+
+<!-- =========================================================
+     STREAMLIT VERSION
+     Paste the following into app.py
+     ========================================================= -->
+
+<!--
+
+st.markdown("""
+<style>
+
+.brand-strip{
+    position:fixed;
+    left:50%;
+    bottom:12px;
+    transform:translateX(-50%);
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5rem;
+
+    padding:.58rem 1rem;
+
+    border:
+        1px solid rgba(255,215,64,.40);
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(9,17,31,.94),
+            rgba(19,28,49,.96)
+        );
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.03) inset,
+        0 0 18px rgba(255,215,64,.16),
+        0 10px 35px rgba(0,0,0,.38);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    color:#dbe7ff;
+
+    font-size:.78rem;
+    font-weight:600;
+
+    letter-spacing:.02em;
+
+    white-space:nowrap;
+}
+
+.brand-strip::before{
+    content:"";
+
+    width:.42rem;
+    height:.42rem;
+
+    border-radius:50%;
+
+    background:#ffd84d;
+
+    box-shadow:
+        0 0 8px rgba(255,216,77,.95),
+        0 0 16px rgba(255,216,77,.65);
+}
+
+.brand-strip .brand-sep{
+    opacity:.45;
+}
+
+.brand-strip .brand-name{
+
+    color:#ffd84d;
+
+    font-weight:900;
+
+    text-shadow:
+        0 0 6px rgba(255,216,77,.72),
+        0 0 14px rgba(255,216,77,.46),
+        0 0 26px rgba(255,190,0,.22);
+}
+
+@media(max-width:640px){
+
+    .brand-strip{
+
+        bottom:8px;
+
+        max-width:
+            calc(100vw - 18px);
+
+        padding:
+            .48rem .72rem;
+
+        font-size:.67rem;
+
+        gap:.34rem;
+
+        overflow:hidden;
+
+        text-overflow:ellipsis;
+    }
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+<div class="brand-strip">
+
+    <span>
+        Engineered &amp; Developed
+    </span>
+
+    <span class="brand-sep">
+        |
+    </span>
+
+    <span class="brand-name">
+        Eng. Ahmed Labib
+    </span>
+
+</div>
+""", unsafe_allow_html=True)
+
+-->
