@@ -1,261 +1,140 @@
-<!-- =========================================================
-     ENGINEERED & DEVELOPED BRANDING
-     Eng. Ahmed Labib
-     ========================================================= -->
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Construction Opportunity Command Center</title>
 <style>
+:root{--bg:#09111f;--panel:#121d33;--text:#eef4ff;--muted:#9db0cf;--line:#263654;--green:#28c76f;--red:#ff5d5d;--amber:#ffc968}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#09111f,#0b1323);color:var(--text)}
+.wrap{max-width:1600px;margin:auto;padding:22px}.hero{padding:24px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#172544,#10192e)}
+.hero h1{margin:0;font-size:34px}.hero p{margin:7px 0 0;color:var(--muted)}
+.timergrid,.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.kpis{grid-template-columns:repeat(5,1fr)}
+.timer,.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}.timer small,.kpi small{color:var(--muted)}.timer strong,.kpi strong{display:block;margin-top:5px;font-size:24px}
+.toolbar{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0}.toolbar input,.toolbar select{width:100%;padding:11px;border-radius:10px;background:#0a1325;color:var(--text);border:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}.tabbtn{padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#111d35;color:var(--text);cursor:pointer}.tabbtn.active{background:#234578}.tab{display:none}.tab.active{display:block}
+.card{padding:16px;border:1px solid var(--line);background:var(--panel);border-radius:16px;margin-bottom:12px}.small{color:var(--muted);font-size:13px}.badge{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid var(--line);font-size:12px;margin-right:5px}
+.tablewrap{overflow:auto;max-height:700px;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;background:var(--panel)}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:13px}th{position:sticky;top:0;background:#172544}
+.ok{color:var(--green);font-weight:900;font-size:18px}.bad{color:var(--red);font-weight:900;font-size:18px}.btn{display:inline-block;text-decoration:none;background:#1d5da6;color:white;padding:8px 11px;border-radius:8px;margin-top:8px}.region{padding:12px;border:1px solid var(--line);background:var(--panel);border-radius:12px;margin-bottom:10px}
+@media(max-width:900px){.toolbar{grid-template-columns:repeat(2,1fr)}.kpis{grid-template-columns:repeat(2,1fr)}.timergrid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+ .wrap{padding:10px}.hero{padding:16px;border-radius:16px}.hero h1{font-size:24px;line-height:1.2}.hero p{font-size:13px}
+ .toolbar,.kpis,.timergrid{grid-template-columns:1fr}.tabbtn{flex:1 1 calc(50% - 8px);font-size:13px;padding:9px 8px}
+ .card{padding:12px}.small{font-size:12px}.badge{font-size:11px}
+ table{min-width:760px}th,td{font-size:12px;padding:8px}.timer strong,.kpi strong{font-size:21px}
+}
+
 .brand-strip{
-    position:fixed;
-    left:50%;
-    bottom:12px;
-    transform:translateX(-50%);
-    z-index:99999;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-
-    padding:9px 16px;
-
-    border:1px solid rgba(255,215,64,.42);
-    border-radius:999px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(9,17,31,.95),
-            rgba(19,28,49,.97)
-        );
-
-    box-shadow:
-        0 0 0 1px rgba(255,255,255,.03) inset,
-        0 0 18px rgba(255,215,64,.18),
-        0 10px 35px rgba(0,0,0,.40);
-
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-
-    color:#dbe7ff;
-
-    font-family:
-        Inter,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.02em;
-
-    white-space:nowrap;
+  position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:99999;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:9px 16px;border:1px solid rgba(255,215,64,.42);border-radius:999px;
+  background:linear-gradient(135deg,rgba(9,17,31,.95),rgba(19,28,49,.97));
+  box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 0 18px rgba(255,215,64,.18),0 10px 35px rgba(0,0,0,.40);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  color:#dbe7ff;font-size:12px;letter-spacing:.02em;white-space:nowrap;
 }
-
-/* Gold illuminated engineering indicator */
 .brand-strip::before{
-    content:"";
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#ffd84d;
-
-    box-shadow:
-        0 0 8px rgba(255,216,77,.95),
-        0 0 16px rgba(255,216,77,.68);
+  content:"";width:7px;height:7px;border-radius:50%;background:#ffd84d;
+  box-shadow:0 0 8px rgba(255,216,77,.95),0 0 16px rgba(255,216,77,.68);
 }
-
-/* Separator */
-.brand-sep{
-    opacity:.45;
-}
-
-/* Engineer name — fluorescent gold */
 .brand-name{
-    color:#ffd84d;
-
-    font-weight:900;
-
-    letter-spacing:.025em;
-
-    text-shadow:
-        0 0 6px rgba(255,216,77,.78),
-        0 0 14px rgba(255,216,77,.50),
-        0 0 26px rgba(255,190,0,.24);
+  color:#ffd84d;font-weight:900;
+  text-shadow:0 0 6px rgba(255,216,77,.78),0 0 14px rgba(255,216,77,.50),0 0 26px rgba(255,190,0,.24);
 }
-
-/* Mobile optimization */
+.brand-sep{opacity:.45}
 @media(max-width:640px){
-
-    .brand-strip{
-        bottom:8px;
-
-        max-width:calc(100vw - 18px);
-
-        padding:8px 11px;
-
-        gap:5px;
-
-        font-size:10.5px;
-
-        overflow:hidden;
-
-        text-overflow:ellipsis;
-    }
+  .brand-strip{bottom:8px;max-width:calc(100vw - 18px);padding:8px 11px;font-size:10.5px;gap:5px;overflow:hidden;text-overflow:ellipsis}
 }
-</style>
 
+</style></head>
+<body><div class="wrap">
+<div class="hero"><h1>🏗️ Construction Opportunity Command Center</h1><p>Where • What • Who • Source path • Urgency • Reliability • Next action</p></div>
 
-<!-- =========================================================
-     PLACE THIS INSIDE <body>
-     ========================================================= -->
-
-<div class="brand-strip">
-
-    <span>
-        Engineered &amp; Developed
-    </span>
-
-    <span class="brand-sep">
-        |
-    </span>
-
-    <span class="brand-name">
-        Eng. Ahmed Labib
-    </span>
-
+<div class="timergrid">
+ <div class="timer"><small>Last checked</small><strong id="lastChecked">--</strong></div>
+ <div class="timer"><small>Next check in</small><strong id="countdown">--:--:--</strong></div>
+ <div class="timer"><small>Watcher cycle</small><strong>60 min</strong></div>
 </div>
 
-
-<!-- =========================================================
-     STREAMLIT VERSION
-     Paste the following into app.py
-     ========================================================= -->
-
-<!--
-
-st.markdown("""
-<style>
-
-.brand-strip{
-    position:fixed;
-    left:50%;
-    bottom:12px;
-    transform:translateX(-50%);
-    z-index:99999;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:.5rem;
-
-    padding:.58rem 1rem;
-
-    border:
-        1px solid rgba(255,215,64,.40);
-
-    border-radius:999px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(9,17,31,.94),
-            rgba(19,28,49,.96)
-        );
-
-    box-shadow:
-        0 0 0 1px rgba(255,255,255,.03) inset,
-        0 0 18px rgba(255,215,64,.16),
-        0 10px 35px rgba(0,0,0,.38);
-
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-
-    color:#dbe7ff;
-
-    font-size:.78rem;
-    font-weight:600;
-
-    letter-spacing:.02em;
-
-    white-space:nowrap;
-}
-
-.brand-strip::before{
-    content:"";
-
-    width:.42rem;
-    height:.42rem;
-
-    border-radius:50%;
-
-    background:#ffd84d;
-
-    box-shadow:
-        0 0 8px rgba(255,216,77,.95),
-        0 0 16px rgba(255,216,77,.65);
-}
-
-.brand-strip .brand-sep{
-    opacity:.45;
-}
-
-.brand-strip .brand-name{
-
-    color:#ffd84d;
-
-    font-weight:900;
-
-    text-shadow:
-        0 0 6px rgba(255,216,77,.72),
-        0 0 14px rgba(255,216,77,.46),
-        0 0 26px rgba(255,190,0,.22);
-}
-
-@media(max-width:640px){
-
-    .brand-strip{
-
-        bottom:8px;
-
-        max-width:
-            calc(100vw - 18px);
-
-        padding:
-            .48rem .72rem;
-
-        font-size:.67rem;
-
-        gap:.34rem;
-
-        overflow:hidden;
-
-        text-overflow:ellipsis;
-    }
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-
-st.markdown("""
-<div class="brand-strip">
-
-    <span>
-        Engineered &amp; Developed
-    </span>
-
-    <span class="brand-sep">
-        |
-    </span>
-
-    <span class="brand-name">
-        Eng. Ahmed Labib
-    </span>
-
+<div class="toolbar">
+<select id="country"><option value="">All countries</option></select>
+<select id="status"><option value="">All statuses</option></select>
+<select id="urgency"><option value="">All urgency</option></select>
+<select id="verification"><option value="">All verification</option></select>
+<select id="sector"><option value="">All sectors</option></select>
+<input id="search" placeholder="Search title, issuer, city, reference...">
 </div>
-""", unsafe_allow_html=True)
 
--->
+<div class="kpis">
+<div class="kpi"><small>Visible</small><strong id="kTotal">0</strong></div>
+<div class="kpi"><small>Open</small><strong id="kOpen">0</strong></div>
+<div class="kpi"><small>New / Updated</small><strong id="kChanged">0</strong></div>
+<div class="kpi"><small>High / Critical</small><strong id="kUrgent">0</strong></div>
+<div class="kpi"><small>Sites watched</small><strong id="kSites">0</strong></div>
+</div>
+
+<div class="tabs">
+<button class="tabbtn active" data-tab="exec">Executive</button>
+<button class="tabbtn" data-tab="queue">Action Queue</button>
+<button class="tabbtn" data-tab="opps">Opportunities</button>
+<button class="tabbtn" data-tab="sites">Watched Sites</button>
+<button class="tabbtn" data-tab="health">Coverage Health</button>
+<button class="tabbtn" data-tab="where">Where</button>
+</div>
+
+<section id="exec" class="tab active"><div id="execContent"></div></section>
+<section id="queue" class="tab"><div class="tablewrap"><table id="queueTable"></table></div></section>
+<section id="opps" class="tab"><div id="cards"></div></section>
+<section id="sites" class="tab"><div class="tablewrap"><table id="sitesTable"></table></div></section>
+<section id="health" class="tab"><div class="tablewrap"><table id="healthTable"></table></div></section>
+<section id="where" class="tab"><select id="regionCountry" style="padding:10px;background:#0a1325;color:white;border:1px solid var(--line);border-radius:10px;margin-bottom:12px"></select><div id="regionCards"></div></section>
+</div>
+
+<div class="brand-strip">
+  <span>Engineered &amp; Developed</span>
+  <span class="brand-sep">|</span>
+  <span class="brand-name">Eng. Ahmed Labib</span>
+</div>
+
+<script>
+const TENDERS=[{"id": "SA-001", "country": "Saudi Arabia", "region": "Riyadh", "city": "Riyadh", "sector": "Public", "category": "Buildings / MEP", "title": "Civil, architectural, electrical and mechanical works", "issuer": "Public Entity", "reference": "SA-2026-001", "procurement_type": "Tender", "published_date": "2026-09-18", "deadline": "2026-10-15", "status": "Open", "value": null, "currency": "SAR", "eligibility": "As per tender documents", "scope": "Civil, architectural, electrical and mechanical works.", "packages": ["Civil", "Architectural", "Electrical", "Mechanical"], "source_name": "Etimad", "source_url": "https://tenders.etimad.sa/", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": true, "is_updated": false, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": 27, "urgency": "Normal", "attention_score": 50, "next_action": "Review scope, eligibility and documents"}, {"id": "JO-001", "country": "Jordan", "region": "Madaba", "city": "Madaba", "sector": "Public", "category": "Roads / Intersection", "title": "Construction and widening of road intersection", "issuer": "Ministry of Public Works and Housing", "reference": "Sh/2026/43", "procurement_type": "Tender", "published_date": "2026-09-16", "deadline": "2026-09-30", "status": "Open", "value": null, "currency": "JOD", "eligibility": "As per tender documents", "scope": "Intersection construction, widening and traffic signal works.", "packages": ["Roadworks", "Traffic", "Civil"], "source_name": "Jordan MPWH", "source_url": "https://www.mpwh.gov.jo/Ar/Modules/Tenders", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": false, "is_updated": true, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": 12, "urgency": "Medium", "attention_score": 55, "next_action": "Review scope, eligibility and documents"}, {"id": "OM-001", "country": "Oman", "region": "Muscat", "city": "Muscat", "sector": "Public", "category": "Water Infrastructure", "title": "Construction supervision of water distribution network", "issuer": "Nama Water Services", "reference": "T/OW/T/10031/2026/2026", "procurement_type": "Consultancy Tender", "published_date": "2026-07-05", "deadline": "2026-09-21", "status": "Open", "value": null, "currency": "OMR", "eligibility": "Registered local firms and specialized international companies", "scope": "Construction supervision of water distribution network works.", "packages": ["Supervision", "Water Networks"], "source_name": "Nama Water Services", "source_url": "https://nws.nama.om/", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": false, "is_updated": false, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": 3, "urgency": "Critical", "attention_score": 55, "next_action": "Open documents now; assign estimator + technical reviewer"}, {"id": "EG-001", "country": "Egypt", "region": "Cairo", "city": "New Cairo", "sector": "Public", "category": "Residential / Infrastructure", "title": "Residential and infrastructure package", "issuer": "New Urban Communities Authority", "reference": "EG-DEMO-001", "procurement_type": "Tender", "published_date": "2026-09-10", "deadline": "2026-10-08", "status": "Open", "value": null, "currency": "EGP", "eligibility": "Contractor classification as stated in tender documents", "scope": "Residential buildings with associated infrastructure and external works.", "packages": ["Residential", "Infrastructure", "External Works"], "source_name": "NUCA", "source_url": "https://www.newcities.gov.eg/", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": true, "is_updated": false, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": 20, "urgency": "Normal", "attention_score": 50, "next_action": "Review scope, eligibility and documents"}, {"id": "LY-001", "country": "Libya", "region": "Tripoli", "city": "Tripoli", "sector": "Public", "category": "Infrastructure", "title": "Urban infrastructure rehabilitation package", "issuer": "Development Authority", "reference": "LY-DEMO-001", "procurement_type": "EOI", "published_date": "2026-09-09", "deadline": "2026-10-12", "status": "Open", "value": null, "currency": "LYD", "eligibility": "As per publicly issued notice", "scope": "Urban roads, utilities, drainage and associated civil works.", "packages": ["Roads", "Utilities", "Drainage"], "source_name": "Development Authority", "source_url": "https://nda.gov.ly/", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": false, "is_updated": false, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": 24, "urgency": "Normal", "attention_score": 25, "next_action": "Monitor and schedule review"}, {"id": "SY-001", "country": "Syria", "region": "Damascus", "city": "Damascus", "sector": "Public", "category": "Building Rehabilitation", "title": "Public building rehabilitation works", "issuer": "Public Works Entity", "reference": "SY-DEMO-001", "procurement_type": "Tender", "published_date": "2026-09-08", "deadline": "2026-10-05", "status": "Open", "value": null, "currency": "SYP", "eligibility": "As per public tender documents", "scope": "Structural, architectural and MEP rehabilitation works.", "packages": ["Structural", "Architectural", "MEP"], "source_name": "Public Procurement Source", "source_url": "https://www.moct.gov.sy/", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": false, "is_updated": false, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": 17, "urgency": "Normal", "attention_score": 25, "next_action": "Monitor and schedule review"}, {"id": "SA-P-001", "country": "Saudi Arabia", "region": "Makkah", "city": "Jeddah", "sector": "Private", "category": "Commercial / Mixed Use", "title": "Mixed-use development contractor prequalification", "issuer": "Private Developer", "reference": "PQ-2026-07", "procurement_type": "Prequalification", "published_date": "2026-09-14", "deadline": "2026-10-01", "status": "Open", "value": null, "currency": "SAR", "eligibility": "Prequalification criteria and vendor registration required", "scope": "Main contractor prequalification for mixed-use commercial and residential development.", "packages": ["Main Contract", "Civil", "MEP", "Fit-out"], "source_name": "Corporate Vendor Portal", "source_url": "https://example.com/", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": true, "is_updated": false, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": 13, "urgency": "Medium", "attention_score": 60, "next_action": "Check PQ criteria and vendor registration"}, {"id": "JO-C-001", "country": "Jordan", "region": "Mafraq", "city": "Mafraq", "sector": "Public", "category": "Bridge", "title": "Supply and installation of steel bridge", "issuer": "Ministry of Public Works and Housing", "reference": "Sh/2026/42", "procurement_type": "Tender", "published_date": "2026-08-01", "deadline": "2026-09-01", "status": "Closed", "value": null, "currency": "JOD", "eligibility": "As per tender documents", "scope": "Supply and installation of a steel bridge on an international road corridor.", "packages": ["Bridge", "Steel", "Civil"], "source_name": "Jordan MPWH", "source_url": "https://www.mpwh.gov.jo/", "last_checked": "2026-09-18T04:10:00+03:00", "is_new": false, "is_updated": false, "verification_status": "Official", "source_type": "Official / Direct", "secondary_source_urls": [], "days_left": -17, "urgency": "Inactive", "attention_score": 20, "next_action": "Archive / monitor award or re-tender"}], HEALTH=[{"country": "Saudi Arabia", "source_name": "Etimad", "source_class": "National Procurement", "coverage_status": "Priority / Verified", "health_state": "checked successfully", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730573+00:00", "notes": "", "client_name": "Etimad", "site_url": "https://tenders.etimad.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Riyadh Municipality", "source_class": "Municipality", "coverage_status": "Watched", "health_state": "watched", "verification": "", "last_checked": "2026-09-18T18:48:17.730589+00:00", "notes": "", "client_name": "Riyadh Municipality", "site_url": "https://www.alriyadh.gov.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Taif Municipality", "source_class": "Municipality", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730593+00:00", "notes": "", "client_name": "Taif Municipality", "site_url": "https://www.taifcity.gov.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Royal Commission for Riyadh City", "source_class": "Royal Commission", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730596+00:00", "notes": "", "client_name": "Royal Commission for Riyadh City", "site_url": "https://www.rcrc.gov.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Royal Commission for Jubail and Yanbu", "source_class": "Royal Commission", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730598+00:00", "notes": "", "client_name": "Royal Commission for Jubail and Yanbu", "site_url": "https://www.rcjy.gov.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "National Water Company", "source_class": "Water Utility", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730601+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "National Water Company", "site_url": "https://www.nwc.com.sa/", "watched_last_turn": true}, {"country": "Egypt", "source_name": "Government Procurement Portal", "source_class": "National Procurement", "coverage_status": "Priority", "health_state": "checked successfully", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730604+00:00", "notes": "", "client_name": "Government Procurement Portal", "site_url": "https://etenders.gov.eg/", "watched_last_turn": true}, {"country": "Egypt", "source_name": "NUCA", "source_class": "Urban Development", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730606+00:00", "notes": "", "client_name": "NUCA", "site_url": "https://www.newcities.gov.eg/", "watched_last_turn": true}, {"country": "Oman", "source_name": "Tender Board eTendering", "source_class": "National Procurement", "coverage_status": "Verified", "health_state": "checked successfully", "verification": "", "last_checked": "2026-09-18T18:48:17.730608+00:00", "notes": "", "client_name": "Tender Board eTendering", "site_url": "https://etendering.tenderboard.gov.om/", "watched_last_turn": true}, {"country": "Oman", "source_name": "Nama Water Services", "source_class": "Water Utility", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730610+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Nama Water Services", "site_url": "https://nws.nama.om/", "watched_last_turn": true}, {"country": "Libya", "source_name": "National Development Agency", "source_class": "Development / Reconstruction", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730613+00:00", "notes": "", "client_name": "National Development Agency", "site_url": "https://nda.gov.ly/", "watched_last_turn": true}, {"country": "Jordan", "source_name": "Government Tenders Department", "source_class": "National Tenders", "coverage_status": "Verified", "health_state": "checked successfully", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730616+00:00", "notes": "", "client_name": "Government Tenders Department", "site_url": "https://gtd.gov.jo/", "watched_last_turn": true}, {"country": "Jordan", "source_name": "Ministry of Public Works & Housing", "source_class": "Public Works", "coverage_status": "Verified", "health_state": "checked successfully", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730618+00:00", "notes": "", "client_name": "Ministry of Public Works & Housing", "site_url": "https://www.mpwh.gov.jo/", "watched_last_turn": true}, {"country": "Syria", "source_name": "Public Procurement / Public Works Sources", "source_class": "Public Procurement", "coverage_status": "Partial", "health_state": "partial / fragmented", "verification": "", "last_checked": "2026-09-18T18:48:17.730621+00:00", "notes": "", "client_name": "Public Procurement / Public Works Sources", "site_url": "https://www.moct.gov.sy/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Riyadh Municipality / Amanat Al Riyadh", "source_class": "Municipality", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730623+00:00", "notes": "", "client_name": "Riyadh Municipality / Amanat Al Riyadh", "site_url": "https://www.alriyadh.gov.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Royal Commission for AlUla", "source_class": "Royal Commission", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730625+00:00", "notes": "", "client_name": "Royal Commission for AlUla", "site_url": "https://www.rcu.gov.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "NEOM", "source_class": "Giga Project / Vendor Portal", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730627+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "NEOM", "site_url": "https://www.neom.com/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Red Sea Global", "source_class": "Developer / Vendor Portal", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730630+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Red Sea Global", "site_url": "https://www.redseaglobal.com/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "ROSHN Group", "source_class": "Developer / Vendor Portal", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730632+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "ROSHN Group", "site_url": "https://www.roshn.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Saudi Aramco", "source_class": "Industrial / Vendor Portal", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730634+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Saudi Aramco", "site_url": "https://www.aramco.com/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Saudi Electricity Company", "source_class": "Power Utility", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730637+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Saudi Electricity Company", "site_url": "https://www.se.com.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "Saudi Arabia Railways", "source_class": "Rail / Logistics", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730639+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Saudi Arabia Railways", "site_url": "https://www.sar.com.sa/", "watched_last_turn": true}, {"country": "Saudi Arabia", "source_name": "MODON", "source_class": "Industrial Cities", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730641+00:00", "notes": "", "client_name": "MODON", "site_url": "https://modon.gov.sa/", "watched_last_turn": true}, {"country": "Oman", "source_name": "Oman Tender Board eTendering", "source_class": "National Procurement", "coverage_status": "Priority / Verified", "health_state": "checked successfully", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730643+00:00", "notes": "", "client_name": "Oman Tender Board eTendering", "site_url": "https://etendering.tenderboard.gov.om/", "watched_last_turn": true}, {"country": "Oman", "source_name": "OQ Group", "source_class": "Energy / Vendor Portal", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730646+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "OQ Group", "site_url": "https://oq.com/", "watched_last_turn": true}, {"country": "Oman", "source_name": "Petroleum Development Oman", "source_class": "Oil & Gas / Vendor Portal", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730648+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Petroleum Development Oman", "site_url": "https://www.pdo.co.om/", "watched_last_turn": true}, {"country": "Oman", "source_name": "ASYAD Group", "source_class": "Logistics / Vendor Portal", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730650+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "ASYAD Group", "site_url": "https://asyad.om/", "watched_last_turn": true}, {"country": "Oman", "source_name": "OPAZ / SEZAD", "source_class": "Special Economic Zones", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730653+00:00", "notes": "", "client_name": "OPAZ / SEZAD", "site_url": "https://opaz.gov.om/", "watched_last_turn": true}, {"country": "Oman", "source_name": "OMRAN Group", "source_class": "Tourism / Developer", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Direct corporate", "last_checked": "2026-09-18T18:48:17.730655+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "OMRAN Group", "site_url": "https://www.omran.om/", "watched_last_turn": true}, {"country": "Oman", "source_name": "Oman Airports", "source_class": "Airports", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730657+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Oman Airports", "site_url": "https://www.omanairports.co.om/", "watched_last_turn": true}, {"country": "Jordan", "source_name": "JONEPS", "source_class": "National e-Procurement", "coverage_status": "Priority", "health_state": "checked successfully", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730660+00:00", "notes": "", "client_name": "JONEPS", "site_url": "https://joneps.gov.jo/", "watched_last_turn": true}, {"country": "Jordan", "source_name": "Aqaba Development Corporation", "source_class": "Development / Port / Logistics", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730662+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Aqaba Development Corporation", "site_url": "https://www.adc.jo/", "watched_last_turn": true}, {"country": "Jordan", "source_name": "ASEZA", "source_class": "Special Economic Zone", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730665+00:00", "notes": "", "client_name": "ASEZA", "site_url": "https://aseza.jo/", "watched_last_turn": true}, {"country": "Jordan", "source_name": "NEPCO", "source_class": "Power Utility", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730667+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "NEPCO", "site_url": "https://www.nepco.com.jo/", "watched_last_turn": true}, {"country": "Jordan", "source_name": "Miyahuna", "source_class": "Water Utility", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730669+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "Miyahuna", "site_url": "https://www.miyahuna.com.jo/", "watched_last_turn": true}, {"country": "Libya", "source_name": "Libyan Tenders", "source_class": "Commercial Tender Aggregator", "coverage_status": "Priority Discovery", "health_state": "aggregator only", "verification": "Aggregator lead — verify issuer", "last_checked": "2026-09-18T18:48:17.730671+00:00", "notes": "", "client_name": "Libyan Tenders", "site_url": "https://libyantenders.ly/", "watched_last_turn": true}, {"country": "Libya", "source_name": "National Oil Corporation", "source_class": "Oil & Gas", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730673+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "National Oil Corporation", "site_url": "https://noc.ly/", "watched_last_turn": true}, {"country": "Libya", "source_name": "General Electricity Company of Libya", "source_class": "Power Utility", "coverage_status": "Watched", "health_state": "public surface watched; login may be required", "verification": "Official / Corporate", "last_checked": "2026-09-18T18:48:17.730675+00:00", "notes": "Login/private invitation areas are not counted as fully covered.", "client_name": "General Electricity Company of Libya", "site_url": "https://www.gecol.ly/", "watched_last_turn": true}, {"country": "Egypt", "source_name": "Holding Company for Water & Wastewater", "source_class": "Water Utility", "coverage_status": "Watched", "health_state": "watched", "verification": "Official", "last_checked": "2026-09-18T18:48:17.730678+00:00", "notes": "", "client_name": "Holding Company for Water & Wastewater", "site_url": "https://www.hcww.com.eg/", "watched_last_turn": true}, {"country": "Syria", "source_name": "Domestic Public Procurement Sources", "source_class": "Government / Entity Direct", "coverage_status": "Partial / Fragmented", "health_state": "partial / fragmented", "verification": "Official where available", "last_checked": "2026-09-18T18:48:17.730680+00:00", "notes": "", "client_name": "Domestic Public Procurement Sources", "site_url": "https://www.moct.gov.sy/", "watched_last_turn": true}, {"country": "Syria", "source_name": "UNGM", "source_class": "International Procurement", "coverage_status": "Priority for aid-funded works", "health_state": "checked successfully", "verification": "Official international", "last_checked": "2026-09-18T18:48:17.730682+00:00", "notes": "", "client_name": "UNGM", "site_url": "https://www.ungm.org/", "watched_last_turn": true}, {"country": "Syria", "source_name": "UNOPS", "source_class": "International Procurement", "coverage_status": "Watched", "health_state": "watched", "verification": "Official international", "last_checked": "2026-09-18T18:48:17.730684+00:00", "notes": "", "client_name": "UNOPS", "site_url": "https://www.unops.org/business-opportunities", "watched_last_turn": true}], REGIONS={"Saudi Arabia": {"Riyadh Region": ["Riyadh", "Al-Saih", "Ad-Dir'iyah", "Wadi Al-Dawasir", "Ad-Dawadmi", "Majmaah"], "Makkah Region": ["Makkah", "Jeddah", "Taif", "Rabigh", "Al-Qunfudhah"], "Eastern Province": ["Dammam", "Hofuf", "Al-Mubarraz", "Jubail", "Khobar", "Dhahran", "Qatif"], "Madinah Region": ["Madinah", "Yanbu", "AlUla"], "Asir Region": ["Abha", "Khamis Mushait", "Bareq", "Ahad Rafidah"], "Al-Qassim Region": ["Buraydah", "Unaizah", "Ar Rass"], "Tabuk Region": ["Tabuk", "Umluj", "Duba"], "Jazan Region": ["Jizan", "Sabya", "Abu Arish"], "Hail Region": ["Hail"], "Najran Region": ["Najran"], "Al-Jouf Region": ["Sakaka", "Qurayyat", "Dumat al-Jandal"], "Northern Borders Region": ["Arar", "Rafha", "Turaif"], "Al-Baha Region": ["Al-Baha"]}, "Oman": {"Muscat Governorate": ["Muscat", "Seeb", "Muttrah", "Bawshar", "Amerat", "Qurayyat"], "Dhofar Governorate": ["Salalah", "Taqah", "Mirbat", "Thumrait", "Sadah"], "Musandam Governorate": ["Khasab", "Dibba", "Bukha", "Madha"], "Al Buraimi Governorate": ["Al Buraimi", "Mahdah", "Al Sunaynah"], "Ad Dakhiliyah Governorate": ["Nizwa", "Bahla", "Samail", "Izki", "Adam", "Al Hamra"], "Al Batinah North Governorate": ["Sohar", "Al Khaburah", "Saham", "Shinas", "Liwa", "Al Suwayq"], "Al Batinah South Governorate": ["Rustaq", "Barka", "Al Musanaah", "Nakhal", "Al Awabi"], "Ash Sharqiyah North Governorate": ["Ibra", "Al Mudhaibi", "Bidiya", "Dima Wattanyeen", "Wadi Bani Khalid"], "Ash Sharqiyah South Governorate": ["Sur", "Jalan Bani Bu Ali", "Jalan Bani Bu Hassan", "Masirah Island"], "Ad Dhahirah Governorate": ["Ibri", "Yanqul", "Dhank"], "Al Wusta Governorate": ["Haima", "Duqm", "Mahout", "Al Jazir"]}, "Jordan": {"North Region": ["Irbid", "Ajloun", "Jerash", "Mafraq"], "Central Region": ["Amman", "Zarqa", "Balqa / Salt", "Madaba"], "South Region": ["Aqaba", "Ma'an", "Karak", "Tafileh"]}, "Libya": {"Tripolitania / Western Libya": ["Tripoli", "Misrata", "Zawiya", "Gharyan", "Khoms", "Bani Walid", "Tarhuna", "Zuwara"], "Cyrenaica / Eastern Libya": ["Benghazi", "Tobruk", "Bayda", "Derna", "Ajdabiya", "Marj"], "Fezzan / Southern Libya": ["Sebha", "Murzuk", "Ubari", "Ghat", "Brak"]}, "Syria": {"Governorates": ["Damascus", "Rif Dimashq", "Homs", "Hama", "Al-Suwayda", "Aleppo", "Raqqa", "Deir ez-Zor", "Al-Hasakah", "Latakia", "Tartus", "Daraa", "Quneitra", "Idlib"]}, "Egypt": {"Coverage": ["All governorates", "All NUCA new cities", "All major municipalities", "All public universities", "All water/wastewater companies", "All major public/private developers"]}};
+const WATCH={last_checked:"2026-09-18T18:48:17.730684+00:00",next_check:"2026-09-18T19:48:17.730684+00:00",interval_minutes:60};
+const $=id=>document.getElementById(id), uniq=a=>[...new Set(a.filter(Boolean))].sort();
+
+function tick(){
+ const last=new Date(WATCH.last_checked), next=new Date(WATCH.next_check), now=new Date();
+ $("lastChecked").textContent=isNaN(last)?"Unknown":last.toLocaleString();
+ let ms=next-now;if(ms<0)ms=0;
+ const h=Math.floor(ms/3600000),m=Math.floor((ms%3600000)/60000),s=Math.floor((ms%60000)/1000);
+ $("countdown").textContent=String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+tick();setInterval(tick,1000);
+
+function fill(id,vals){vals.forEach(v=>$(id).insertAdjacentHTML("beforeend",`<option>${v}</option>`))}
+fill("country",uniq(TENDERS.map(x=>x.country)));fill("status",uniq(TENDERS.map(x=>x.status)));fill("urgency",uniq(TENDERS.map(x=>x.urgency)));fill("verification",uniq(TENDERS.map(x=>x.verification_status)));fill("sector",uniq(TENDERS.map(x=>x.sector)));
+Object.keys(REGIONS).forEach(v=>$("regionCountry").insertAdjacentHTML("beforeend",`<option>${v}</option>`));$("kSites").textContent=HEALTH.length;
+
+function filtered(){const vals={country:$("country").value,status:$("status").value,urgency:$("urgency").value,verification_status:$("verification").value,sector:$("sector").value};const q=$("search").value.trim().toLowerCase();return TENDERS.filter(r=>{for(const[k,v]of Object.entries(vals))if(v&&r[k]!==v)return false;if(q){const h=[r.title,r.issuer,r.region,r.city,r.reference,r.scope,r.source_name].join(" ").toLowerCase();if(!h.includes(q))return false}return true})}
+
+function render(){
+ const rows=filtered().sort((a,b)=>(b.attention_score||0)-(a.attention_score||0));
+ $("kTotal").textContent=rows.length;$("kOpen").textContent=rows.filter(x=>String(x.status).toLowerCase()=="open").length;$("kChanged").textContent=rows.filter(x=>x.is_new||x.is_updated).length;$("kUrgent").textContent=rows.filter(x=>["Critical","High"].includes(x.urgency)).length;
+ $("execContent").innerHTML=rows.slice(0,6).map(r=>`<div class="card"><b>${r.country} — ${r.title}</b><div class="small">${r.issuer} · ${r.region} · ${r.city}</div><div class="small">Urgency ${r.urgency} · Attention ${r.attention_score} · Verification ${r.verification_status}</div><div class="small">Next: ${r.next_action}</div></div>`).join("");
+ const qc=["attention_score","urgency","country","region","city","title","issuer","deadline","verification_status","next_action"];
+ $("queueTable").innerHTML="<thead><tr>"+qc.map(c=>`<th>${c}</th>`).join("")+"</tr></thead><tbody>"+rows.map(r=>"<tr>"+qc.map(c=>`<td>${r[c]??""}</td>`).join("")+"</tr>").join("")+"</tbody>";
+ $("cards").innerHTML=rows.map(r=>`<div class="card"><div><span class="badge">${r.country||""}</span><span class="badge">${r.sector||""}</span><span class="badge">${r.status||""}</span><span class="badge">${r.urgency||""}</span></div><h3>${r.title||""}</h3><div class="small"><b>${r.issuer||""}</b> · ${r.region||""} · ${r.city||""} · Ref ${r.reference||"—"}</div><p>${r.scope||""}</p><div class="small">How it came: <b>${r.source_type||""}</b> via <b>${r.source_name||""}</b></div><div class="small">Next action: <b>${r.next_action||""}</b></div>${r.source_url?`<a class="btn" target="_blank" href="${r.source_url}">Open source</a>`:""}</div>`).join("");
+}
+
+function renderSites(){
+ const cols=["watched_last_turn","country","client_name","source_name","site_url","source_class","health_state","last_checked"];
+ $("sitesTable").innerHTML="<thead><tr><th>Last turn</th><th>Country</th><th>Client / Issuer</th><th>Watched site</th><th>URL</th><th>Source class</th><th>Status</th><th>Last checked</th></tr></thead><tbody>"+
+ HEALTH.map(r=>`<tr><td>${r.watched_last_turn?'<span class="ok">✅</span>':'<span class="bad">❌</span>'}</td><td>${r.country||""}</td><td>${r.client_name||""}</td><td>${r.source_name||""}</td><td>${r.site_url?`<a href="${r.site_url}" target="_blank">Open</a>`:""}</td><td>${r.source_class||""}</td><td>${r.health_state||""}</td><td>${r.last_checked||""}</td></tr>`).join("")+"</tbody>";
+}
+function renderHealth(){const cols=["country","source_name","coverage_status","health_state","verification","notes"];$("healthTable").innerHTML="<thead><tr>"+cols.map(c=>`<th>${c}</th>`).join("")+"</tr></thead><tbody>"+HEALTH.map(r=>"<tr>"+cols.map(c=>`<td>${r[c]??""}</td>`).join("")+"</tr>").join("")+"</tbody>"}
+function renderRegions(){const c=$("regionCountry").value,obj=REGIONS[c]||{};$("regionCards").innerHTML=Object.entries(obj).map(([r,cities])=>`<div class="region"><b>${r}</b><div class="small" style="margin-top:6px">${cities.join(" • ")}</div></div>`).join("")}
+
+["country","status","urgency","verification","sector","search"].forEach(id=>$(id).addEventListener("input",render));
+$("regionCountry").addEventListener("change",renderRegions);
+document.querySelectorAll(".tabbtn").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tabbtn").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");$(b.dataset.tab).classList.add("active")}));
+render();renderSites();renderHealth();renderRegions();
+</script></body></html>
