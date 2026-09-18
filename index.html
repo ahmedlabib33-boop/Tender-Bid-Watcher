@@ -102,13 +102,31 @@ const WATCH={last_checked:"2026-09-18T18:48:17.730684+00:00",next_check:"2026-09
 const $=id=>document.getElementById(id), uniq=a=>[...new Set(a.filter(Boolean))].sort();
 
 function tick(){
- const last=new Date(WATCH.last_checked), next=new Date(WATCH.next_check), now=new Date();
- $("lastChecked").textContent=isNaN(last)?"Unknown":last.toLocaleString();
- let ms=next-now;if(ms<0)ms=0;
- const h=Math.floor(ms/3600000),m=Math.floor((ms%3600000)/60000),s=Math.floor((ms%60000)/1000);
- $("countdown").textContent=String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+ const last = new Date(WATCH.last_checked);
+ const configuredNext = new Date(WATCH.next_check);
+ const now = new Date();
+ const intervalMs = Math.max(1, Number(WATCH.interval_minutes || 60)) * 60 * 1000;
+
+ $("lastChecked").textContent = isNaN(last) ? "Unknown" : last.toLocaleString();
+
+ // Keep the countdown alive even if the embedded next_check timestamp is already past.
+ let next = configuredNext;
+ if (isNaN(next)) {
+   next = new Date(now.getTime() + intervalMs);
+ } else if (next <= now) {
+   const elapsed = now.getTime() - next.getTime();
+   const cycles = Math.floor(elapsed / intervalMs) + 1;
+   next = new Date(next.getTime() + cycles * intervalMs);
+ }
+
+ const ms = Math.max(0, next.getTime() - now.getTime());
+ const h = Math.floor(ms / 3600000);
+ const m = Math.floor((ms % 3600000) / 60000);
+ const s = Math.floor((ms % 60000) / 1000);
+ $("countdown").textContent = String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
 }
-tick();setInterval(tick,1000);
+tick();
+setInterval(tick,1000);
 
 function fill(id,vals){vals.forEach(v=>$(id).insertAdjacentHTML("beforeend",`<option>${v}</option>`))}
 fill("country",uniq(TENDERS.map(x=>x.country)));fill("status",uniq(TENDERS.map(x=>x.status)));fill("urgency",uniq(TENDERS.map(x=>x.urgency)));fill("verification",uniq(TENDERS.map(x=>x.verification_status)));fill("sector",uniq(TENDERS.map(x=>x.sector)));
